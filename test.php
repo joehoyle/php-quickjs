@@ -9,14 +9,14 @@ typedef struct JSClass JSClass;
 typedef uint32_t JSClassID;
 typedef uint32_t JSAtom;
 
-typedef struct JSValueUnion {
-    int32_t myInt;
+typedef union JSValueUnion {
+    int32_t int32;
+    double float64;
+    void *ptr;
 } JSValueUnion;
 
 typedef struct JSValue {
-    struct {
-		int32_t myInt;
-	} u;
+    JSValueUnion u;
     int64_t tag;
 } JSValue;
 
